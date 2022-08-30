@@ -1,11 +1,16 @@
 <div
   class="container bg-light p-5 border border-dark"
   [ngStyle]="{
-    'margin-top': '250px'
+    'margin-top': '175px'
   }"
 >
+  <ng-container *ngIf="isFormSend">
+    <div class="bg-info">
+      <p>Formulário enviado com sucesso!!</p>
+    </div>
+  </ng-container>
   <!-- <form> recebe uma diretiva [formGroup] com o nome do FormGroup do <NomeDoComponente>.component.ts -->
-  <form [formGroup]="registerForm">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="d-flex flex-column" [ngStyle]="{ gap: '1rem' }">
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
@@ -51,4 +56,37 @@
       </button>
     </div>
   </form>
+</div>
+
+<!-- Mostrando as validações no HTML -->
+<div class="container mt-5 border border-secondary p-4">
+  <div>
+    Valores do Formulário:
+    <pre>
+      {{ registerForm.value | json }}
+    </pre>
+  </div>
+  <hr />
+  <!-- Se o formulário é válido ou não. Isso pode ser usabo para desabilitar o botão de envio quando o form não for válido -->
+  <div>
+    Formulário é válido: <span class="text-info">{{ registerForm.valid }}</span>
+  </div>
+  <hr />
+  <!-- Os erros podem aparecer embaixo dos inputs, por exemplo quando o usuário não coloca o length mínimo para a senha -->
+  <div>
+    Erros do formulário:
+    <div>
+      <span class="text-danger"
+        >NOME: {{ registerForm.get("name")?.errors | json }}</span
+      >
+      <hr />
+      <span class="text-danger"
+        >EMAIL: {{ registerForm.get("email")?.errors | json }}</span
+      >
+      <hr />
+      <span class="text-danger"
+        >SENHA: {{ registerForm.get("password")?.errors | json }}</span
+      >
+    </div>
+  </div>
 </div>
