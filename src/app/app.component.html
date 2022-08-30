@@ -1,7 +1,7 @@
 <div
   class="container bg-light p-5 border border-dark"
   [ngStyle]="{
-    'margin-top': '175px'
+    'margin-top': '50px'
   }"
 >
   <ng-container *ngIf="isFormSend">
@@ -53,7 +53,7 @@
       </div>
       <!-- Invalidando botão de envio caso formulário não esteja com todas os campos preenchidos corretamente -->
       <button
-        [disabled]="!registerForm.valid"
+        [disabled]="registerForm.invalid"
         type="submit"
         class="d-block mx-auto btn btn-outline-dark w-25"
       >
