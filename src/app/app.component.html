@@ -4,12 +4,15 @@
     'margin-top': '250px'
   }"
 >
-  <form>
+  <!-- <form> recebe uma diretiva [formGroup] com o nome do FormGroup do <NomeDoComponente>.component.ts -->
+  <form [formGroup]="registerForm">
     <div class="d-flex flex-column" [ngStyle]="{ gap: '1rem' }">
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
         <div class="col-sm-10">
+          <!-- Input vai receber o FormControlName que vai fazer o link para as validações do FormControl no FormGroup -->
           <input
+            formControlName="name"
             type="text"
             class="form-control"
             id="inputName"
@@ -21,9 +24,10 @@
         <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
           <input
+            formControlName="email"
             type="text"
             class="form-control"
-            id="inputName"
+            id="inputEmail"
             placeholder="Email"
           />
         </div>
@@ -34,6 +38,7 @@
         >
         <div class="col-sm-10">
           <input
+            formControlName="password"
             type="password"
             class="form-control"
             id="inputPassword"
