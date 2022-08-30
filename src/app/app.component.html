@@ -51,7 +51,12 @@
           />
         </div>
       </div>
-      <button type="submit" class="d-block mx-auto btn btn-outline-dark w-25">
+      <!-- Invalidando botão de envio caso formulário não esteja com todas os campos preenchidos corretamente -->
+      <button
+        [disabled]="!registerForm.valid"
+        type="submit"
+        class="d-block mx-auto btn btn-outline-dark w-25"
+      >
         Send
       </button>
     </div>
